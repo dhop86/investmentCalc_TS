@@ -1,58 +1,52 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.My_Investment = void 0;
-const utils_1 = require("../Modules/utils");
-class My_Investment {
-    initialAmount;
-    years;
-    monthlyContrib;
-    interestRate;
-    constructor(initialAmount, years, monthlyContrib, interestRate) {
+import { Is_Investment } from "../Interfaces/Is_Investment";
+import { GET_ELEM_BY_ID } from "../Modules/utils";
+
+export class My_Investment implements Is_Investment {
+    constructor(
+        public initialAmount: number, 
+        public years: number, 
+        public monthlyContrib: number, 
+        public interestRate: number,
+    ) {
         this.initialAmount = initialAmount;
         this.years = years;
         this.monthlyContrib = monthlyContrib;
         this.interestRate = interestRate;
-        this.initialAmount = initialAmount;
-        this.years = years;
-        this.monthlyContrib = monthlyContrib;
-        this.interestRate = interestRate;
-    }
-    ;
-    calculator() {
-        const monthsPerYear = 12;
-        let totalInterestEarned = 0;
-        let principle = this.initialAmount;
-        let futureAmount = this.initialAmount;
-        for (let i = 0; i < this.years;) {
-            for (let j = 0; j < monthsPerYear;) {
+    };
+
+    calculator(): string[] {
+        const monthsPerYear: number = 12;
+        let totalInterestEarned: number = 0;
+        let principle: number = this.initialAmount;
+        let futureAmount: number = this.initialAmount;
+        for (let i: number = 0; i < this.years;){
+            for (let j: number = 0; j < monthsPerYear;){
                 totalInterestEarned += principle * (this.interestRate / monthsPerYear);
                 principle += this.monthlyContrib;
                 j++;
-            }
-            ;
+            };
             futureAmount = (principle + totalInterestEarned);
-            let values = [(i + 1), futureAmount, principle, totalInterestEarned,];
+            let values: number[] = [(i + 1), futureAmount, principle, totalInterestEarned,];
             this.addRow(values);
             i++;
-        }
-        ;
-        let totals = [futureAmount, principle, totalInterestEarned,];
-        let str_totals = [];
-        for (let i = 0; i < totals.length;) {
+        };
+        let totals: number[] = [futureAmount, principle, totalInterestEarned,];
+        let str_totals: string[] = [];
+        for (let i: number = 0; i < totals.length;) {
             totals[i] = parseFloat(totals[i].toFixed(2)),
-                str_totals[i] = String(totals[i]);
+            str_totals[i] = String(totals[i]);
             i++;
         }
         return str_totals;
-    }
-    ;
-    addRow(a) {
-        let values = [a[0], a[1], a[2], a[3]];
-        for (let i = 0; i < values.length;) {
+    };
+
+    addRow(a: number[]) : void {
+        let values: number[] = [a[0], a[1], a[2], a[3]];
+        for (let i: number = 0; i < values.length;) {
             values[i] = parseFloat(values[i].toFixed(2));
             i++;
         }
-        let table = (0, utils_1.GET_ELEM_BY_ID)('tableData');
+        let table = GET_ELEM_BY_ID('tableData');
         let tr = document.createElement("tr");
         tr.className = "addedRow";
         // Create a '<td>' column for the year
@@ -72,9 +66,5 @@ class My_Investment {
         tr.appendChild(td_Interest);
         tr.appendChild(td_TotalInvestment);
         table.appendChild(tr);
-    }
-    ;
-}
-exports.My_Investment = My_Investment;
-;
-//# sourceMappingURL=My_Investment.js.map
+    };
+};
