@@ -18,7 +18,7 @@ let startingFocus = function (){
 
 // onclick of Submit, call captureFormData()
 let submit = function(){
-    deleteTableRows();
+    clearTable();
     let values = captureFormData();
     const futureInvestmentAmount = GET_ELEM_BY_ID('futureInvestmentAmount') as HTMLInputElement;
     futureInvestmentAmount.value = values[0];
@@ -54,12 +54,12 @@ let reset = function(){
     futureInvestmentAmount.value = '';
     principle.value = '';
     totalInterestEarned.value = '';
-    deleteTableRows();
+    clearTable();
     startingFocus();
 };
 
 // Delete rows from the table. Called from reset() & submit()
-let deleteTableRows = function(){
+let clearTable = function(){
     const elements = GET_ELEM_BY_CLASS("addedRow");
     while(elements.length > 0){
         elements[0].parentNode.removeChild(elements[0]);
