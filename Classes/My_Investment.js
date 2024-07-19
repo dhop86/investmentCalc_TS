@@ -40,6 +40,7 @@ export class My_Investment {
                 str_totals[i] = String(totals[i]);
             i++;
         }
+        ;
         return str_totals;
     }
     ;
@@ -49,6 +50,7 @@ export class My_Investment {
             values[i] = parseFloat(values[i].toFixed(2));
             i++;
         }
+        ;
         let table;
         let tableID = GET_ELEM_BY_ID('dataTable');
         if (tableID) {
