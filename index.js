@@ -72,5 +72,6 @@ document.onreadystatechange = () => {
         init();
         startingFocus();
     }
+    ;
 };
 //# sourceMappingURL=index.js.map
