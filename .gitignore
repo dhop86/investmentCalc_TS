@@ -124,3 +124,16 @@ node_modules/typescript/lib/ru/diagnosticMessages.generated.json
 node_modules/typescript/lib/tr/diagnosticMessages.generated.json
 node_modules/typescript/lib/zh-cn/diagnosticMessages.generated.json
 node_modules/typescript/lib/zh-tw/diagnosticMessages.generated.json
+investmentCalc.js
+investmentCalc.js.map
+.DS_Store
+Modules/validate.js.map
+Modules/validate.js
+Modules/utils.js.map
+Modules/utils.js
+Interfaces/Is_Investment.js
+Classes/My_Investment.js.map
+Classes/My_Investment.js
+.vscode/tasks.json
+index.js.map
+index.js

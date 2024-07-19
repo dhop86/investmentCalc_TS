@@ -36,7 +36,7 @@ export class My_Investment implements Is_Investment {
             totals[i] = parseFloat(totals[i].toFixed(2)),
             str_totals[i] = String(totals[i]);
             i++;
-        }
+        };
         return str_totals;
     };
 
@@ -45,26 +45,30 @@ export class My_Investment implements Is_Investment {
         for (let i: number = 0; i < values.length;) {
             values[i] = parseFloat(values[i].toFixed(2));
             i++;
-        }
-        let table = GET_ELEM_BY_ID('tableData');
-        let tr = document.createElement("tr");
-        tr.className = "addedRow";
-        // Create a '<td>' column for the year
-        let td_Year = document.createElement("td");
-        td_Year.innerHTML = "Year " + values[0];
-        // Create a '<td>' column for the future amount
-        let td_TotalInvestment = document.createElement("td");
-        td_TotalInvestment.innerHTML = "$" + values[1];
-        // Create a '<td>' column for the principle amount
-        let td_Principle = document.createElement("td");
-        td_Principle.innerHTML = "$" + values[2];
-        // Create a '<td>' column for the interest earned
-        let td_Interest = document.createElement("td");
-        td_Interest.innerHTML = "$" + values[3];
-        tr.appendChild(td_Year);
-        tr.appendChild(td_Principle);
-        tr.appendChild(td_Interest);
-        tr.appendChild(td_TotalInvestment);
-        table.appendChild(tr);
+        };
+        let table: HTMLElement;
+        let tableID: HTMLElement | null = GET_ELEM_BY_ID('dataTable');
+        if (tableID) {
+            table = tableID;
+            let tr = document.createElement("tr");
+            tr.className = "addedRow";
+            // Create a '<td>' column for the year
+            let td_Year = document.createElement("td");
+            td_Year.innerHTML = "Year " + values[0];
+            // Create a '<td>' column for the future amount
+            let td_TotalInvestment = document.createElement("td");
+            td_TotalInvestment.innerHTML = "$" + values[1];
+            // Create a '<td>' column for the principle amount
+            let td_Principle = document.createElement("td");
+            td_Principle.innerHTML = "$" + values[2];
+            // Create a '<td>' column for the interest earned
+            let td_Interest = document.createElement("td");
+            td_Interest.innerHTML = "$" + values[3];
+            tr.appendChild(td_Year);
+            tr.appendChild(td_Principle);
+            tr.appendChild(td_Interest);
+            tr.appendChild(td_TotalInvestment);
+            table.appendChild(tr);
+        };
     };
 };

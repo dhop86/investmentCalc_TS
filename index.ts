@@ -1,8 +1,9 @@
-import { GET_ELEM_BY_ID, GET_ELEM_BY_CLASS } from "./Modules/utils";
+import { GET_ELEM_BY_ID, GET_ELEM_BY_CLASS,} from "./Modules/utils";
 import { My_Investment } from "./Classes/My_Investment";
+import { validate } from "./Modules/validate";
 
 // Initialize the form. Add event listeners to buttons.
-let init = function() {
+let init = function() : void {
     const reset_btn = GET_ELEM_BY_ID('reset') as HTMLInputElement;
     reset_btn.onclick = reset;
 
@@ -11,21 +12,23 @@ let init = function() {
 };
 
 // Set the starting focus
-let startingFocus = function (){
+let startingFocus = function () : void {
     const initialFocus = GET_ELEM_BY_ID('startingInvestment') as HTMLInputElement;
     initialFocus.focus();
 };
 
 // onclick of Submit, call captureFormData()
-let submit = function(){
+let submit = function() : void {
     clearTable();
-    let values = captureFormData();
-    const futureInvestmentAmount = GET_ELEM_BY_ID('futureInvestmentAmount') as HTMLInputElement;
-    futureInvestmentAmount.value = values[0];
-    const principle = GET_ELEM_BY_ID('principle') as HTMLInputElement;
-    principle.value = values[1];
-    const totalInterestEarned = GET_ELEM_BY_ID('totalInterestEarned') as HTMLInputElement;
-    totalInterestEarned.value = values[2];
+    if(validate()){
+        let values = captureFormData();
+        const futureInvestmentAmount = GET_ELEM_BY_ID('futureInvestmentAmount') as HTMLInputElement;
+        futureInvestmentAmount.value = values[0];
+        const principle = GET_ELEM_BY_ID('principle') as HTMLInputElement;
+        principle.value = values[1];
+        const totalInterestEarned = GET_ELEM_BY_ID('totalInterestEarned') as HTMLInputElement;
+        totalInterestEarned.value = values[2];
+    };
 };
 
 // Collect form data, create a new investment object, call investment.calculator()
@@ -39,7 +42,7 @@ let captureFormData = () : string[] => {
 };
 
 // onclick of Reset, return the form to the default state
-let reset = function(){
+let reset = function() : void {
     const startingInvestment = GET_ELEM_BY_ID('startingInvestment') as HTMLInputElement;
     const yearsToGrow  = GET_ELEM_BY_ID('yearsToGrow') as HTMLInputElement;
     const monthlyContribution = GET_ELEM_BY_ID('monthlyContribution') as HTMLInputElement;
@@ -59,17 +62,19 @@ let reset = function(){
 };
 
 // Delete rows from the table. Called from reset() & submit()
-let clearTable = function(){
+let clearTable = function() : void {
     const elements = GET_ELEM_BY_CLASS("addedRow");
-    while(elements.length > 0){
-        elements[0].parentNode.removeChild(elements[0]);
-    }
+    if (elements && elements[0].parentNode) {
+        while(elements.length > 0){
+            elements[0].parentNode.removeChild(elements[0]);
+        };
+    };
 };
 
 // Wait for page to be ready
-document.onreadystatechange = () => {
+document.onreadystatechange = () : void => {
     if (document.readyState === "interactive" || document.readyState === "complete") {
       init();
       startingFocus();
-    }
+    };
   };
