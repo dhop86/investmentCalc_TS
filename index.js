@@ -1,6 +1,6 @@
-import { GET_ELEM_BY_ID, GET_ELEM_BY_CLASS, } from "./Modules/utils";
-import { My_Investment } from "./Classes/My_Investment";
-import { validate } from "./Modules/validate";
+import { GET_ELEM_BY_ID, GET_ELEM_BY_CLASS, } from "./Modules/utils.js";
+import { My_Investment } from "./Classes/My_Investment.js";
+import { validate } from "./Modules/validate.js";
 // Initialize the form. Add event listeners to buttons.
 let init = function () {
     const reset_btn = GET_ELEM_BY_ID('reset');
