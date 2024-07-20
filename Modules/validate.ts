@@ -1,4 +1,4 @@
-import { GET_ELEM_BY_ID } from "./utils";
+import { GET_ELEM_BY_ID } from "./utils.js";
 
 const isNumber = /^\d+(\.\d{1,2})?$/;
 

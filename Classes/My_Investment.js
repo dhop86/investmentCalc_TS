@@ -1,4 +1,4 @@
-import { GET_ELEM_BY_ID } from "../Modules/utils";
+import { GET_ELEM_BY_ID } from "../Modules/utils.js";
 export class My_Investment {
     initialAmount;
     years;
